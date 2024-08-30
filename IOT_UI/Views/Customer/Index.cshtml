@@ -1,0 +1,101 @@
+﻿<!-- Include Partial View -->
+@Html.Partial("_navigation")
+
+<main role="main" id="main" class="main">
+    <!-- Page Title -->
+    <div class="pagetitle">
+        <h1>Customer</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Customer</a></li>
+                <li class="breadcrumb-item active">Add Customer</li>
+            </ol>
+        </nav>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomer">
+            Add Customer
+        </button>
+    </div>
+
+    <!-- Page Section -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>City</th>
+                                    <th>Region</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Unity Pugh</td>
+                                    <td>9958</td>
+                                    <td>Curicó</td>
+                                    <td>2005/02/11</td>
+                                    <td>37%</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <i class="bi bi-three-dots-vertical menu-button"></i>
+                                            <div class="dropdown-content">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateCustomer">Edit</a>
+                                                <a href="#">Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Theodore Duran</td>
+                                    <td>8971</td>
+                                    <td>Dhanbad</td>
+                                    <td>1999/04/07</td>
+                                    <td>97%</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <i class="bi bi-three-dots-vertical menu-button"></i>
+                                            <div class="dropdown-content">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateCustomer">Edit</a>
+                                                <a href="#">Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kylie Bishop</td>
+                                    <td>3147</td>
+                                    <td>Norman</td>
+                                    <td>2005/09/08</td>
+                                    <td>63%</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <i class="bi bi-three-dots-vertical menu-button"></i>
+                                            <div class="dropdown-content">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateCustomer">Edit</a>
+                                                <a href="#">Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Add Customer Partial View -->
+    @Html.Partial("_AddCustomer")
+
+    <!-- Add Customer Partial View -->
+    @Html.Partial("_UpdateCustomer")
+</main>

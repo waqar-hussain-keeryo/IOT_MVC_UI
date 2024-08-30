@@ -1,0 +1,65 @@
+﻿<!-- Include Partial View -->
+@Html.Partial("_navigation")
+
+<main role="main" id="main" class="main">
+    <!-- Page Title -->
+    <div class="pagetitle">
+        <h1>Digital Service</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Digital Service</a></li>
+                <li class="breadcrumb-item active">Add Digital Service</li>
+            </ol>
+        </nav>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addService">
+            Add Digital Service
+        </button>
+    </div>
+
+    <!-- Page Section -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Is Active?</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Unity Pugh</td>
+                                    <td>Curicó</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <i class="bi bi-three-dots-vertical menu-button"></i>
+                                            <div class="dropdown-content">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateService">Edit</a>
+                                                <a href="#">Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+@*     <!-- Add Customer Partial View -->
+    @Html.Partial("_AddService")
+
+    <!-- Add Customer Partial View -->
+    @Html.Partial("_UpdateService") *@
+</main>
