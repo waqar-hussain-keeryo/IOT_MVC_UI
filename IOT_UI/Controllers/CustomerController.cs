@@ -23,5 +23,10 @@ namespace IOT_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult ProductType()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,33 @@
+﻿<div class="modal fade" id="addCustomer" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Add Customer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="First Name" id="txt_firstName">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Last Name" id="txt_lastName">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email" id="txt_email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" id="txt_password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="User Role" id="txt_userRole">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="btnAddCustomer()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

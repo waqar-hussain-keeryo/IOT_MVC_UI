@@ -8,5 +8,25 @@ namespace IOT_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult UserRole()
+        {
+            return View();
+        }
+
+        public IActionResult AdminAccount()
+        {
+            return View();
+        }
+
+        public IActionResult Customers()
+        {
+            return View();
+        }
+
+        public IActionResult Users()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,30 @@
+﻿<div class="modal fade" id="addService" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Add Service</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label>Start Date</label>
+                        <input type="date" class="form-control" placeholder="Start Date" id="txt_startDate">
+                    </div>
+                    <div class="mb-3">
+                        <label>End Date</label>
+                        <input type="date" class="form-control" placeholder="End Date" id="txt_endDate">
+                    </div>
+                    <div class="mb-3">
+                        <label>Is Active?</label>
+                        <input type="checkbox" name="isActive" id="txt_active">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="btnAddService()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

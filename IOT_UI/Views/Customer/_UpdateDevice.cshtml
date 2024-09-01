@@ -1,0 +1,27 @@
+﻿<div class="modal fade" id="updateDevice" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update Device</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Device Name" id="txt_deviceName">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Product Type" id="txt_productType">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Threshold Value" id="txt_thresholdValue">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="btnUpdateDevice()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
