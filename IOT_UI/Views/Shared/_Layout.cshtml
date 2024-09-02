@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 
     <!-- Favicons -->
     <link href="~/img/favicon.png" rel="icon" />
@@ -21,6 +23,12 @@
     <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
     <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet" />
     <link href="~/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- jQuery and Axios -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="~/connectivity/Common.js"></script>
+    <script src="~/connectivity/Login.js"></script>
 </head>
 <body>
 
@@ -28,14 +36,17 @@
         @RenderBody()
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Vendor JS Files -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="~/vendor/chart.js/chart.umd.js"></script>
     <script src="~/vendor/echarts/echarts.min.js"></script>
     <script src="~/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="~/vendor/tinymce/tinymce.min.js"></script>
+
+    <!-- Custom JS -->
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

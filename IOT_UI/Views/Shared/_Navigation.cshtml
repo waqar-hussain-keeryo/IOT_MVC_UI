@@ -1,8 +1,40 @@
-﻿ <!-- ======= Header ======= -->
+﻿<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve the stored email and role
+        var email = localStorage.getItem("email");
+        var role = localStorage.getItem("role");
+
+        // Update the header with user email and role
+        if (email) {
+            document.getElementById('userEmail').textContent = email;
+            document.getElementById('userName').textContent = email;
+        }
+        if (role) {
+            document.getElementById('userRole').textContent = role;
+
+            // Show/hide menu items based on role
+            var adminItems = document.querySelectorAll('.admin-role');
+            var customerItems = document.querySelectorAll('.customer-role');
+
+            if (role === 'Admin') {
+                adminItems.forEach(item => item.style.display = 'block');
+                customerItems.forEach(item => item.style.display = 'block');
+            } else if (role === 'Customer') {
+                adminItems.forEach(item => item.style.display = 'none');
+                customerItems.forEach(item => item.style.display = 'block');
+            } else {
+                adminItems.forEach(item => item.style.display = 'none');
+                customerItems.forEach(item => item.style.display = 'none');
+            }
+        }
+    });
+</script>
+
+<!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-            <img src="assets/img/logo.png" alt="">
+            <img src="~/img/logo.png" alt="">
             <span class="d-none d-lg-block">IOT</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -11,26 +43,19 @@
         <ul class="d-flex align-items-center">
             <li class="nav-item dropdown pe-3">
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">Global Account</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2" id="userEmail"></span>
                 </a><!-- End Profile Image Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>User Name</h6>
-                        <span>User Role</span>
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <i class="bi bi-person"></i>
-                            <span>My Profile</span>
-                        </a>
+                        <h6 id="userName"></h6>
+                        <span id="userRole">User Role</span>
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
+                            <span onclick="signOut()">Sign Out</span>
                         </a>
                     </li>
                 </ul><!-- End Profile Dropdown Items -->
@@ -50,63 +75,55 @@
                 <i class="bi bi-grid"></i><span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-heading">Global Admin</li>
-        <!--Admin Accounts-->
-        <li class="nav-item">
+        <!-- Admin Items -->
+        <li class="nav-heading admin-role">Global Admin</li>
+        <li class="nav-item admin-role">
             <a class="nav-link collapsed" href="@Url.Action("AdminAccount","Admin")">
                 <i class="bi bi-person"></i><span>Admin Account</span>
             </a>
         </li>
-        <!-- Customer Account-->
-        <li class="nav-item">
+        <li class="nav-item admin-role">
             <a class="nav-link collapsed" href="@Url.Action("Customers","Admin")">
                 <i class="bi bi-person"></i><span>Customer Account</span>
             </a>
         </li>
-        <!-- User Account-->
-        <li class="nav-item">
+        <li class="nav-item admin-role">
             <a class="nav-link collapsed" href="@Url.Action("Users","Admin")">
                 <i class="bi bi-person"></i><span>User Account</span>
             </a>
         </li>
-        <!-- Account Role-->
-        <li class="nav-item">
+        <li class="nav-item admin-role">
             <a class="nav-link collapsed" href="@Url.Action("UserRole","Admin")">
                 <i class="bi bi-person"></i><span>User Role</span>
             </a>
         </li>
-        <li class="nav-heading">Customer</li>
-        <!-- Customers -->
-        <li class="nav-item">
+        <!-- Customer Items -->
+        <li class="nav-heading customer-role">Customer</li>
+        <li class="nav-item customer-role">
             <a class="nav-link collapsed" href="@Url.Action("Index","Customer")">
                 <i class="bi bi-person"></i><span>Customers</span>
             </a>
         </li>
-        <!-- Sites -->
-        <li class="nav-item">
+        <li class="nav-item customer-role">
             <a class="nav-link collapsed" href="@Url.Action("Sites","Customer")">
                 <i class="bi bi-building"></i><span>Sites</span>
             </a>
         </li>
-        <!-- Devices -->
-        <li class="nav-item">
+        <li class="nav-item customer-role">
             <a class="nav-link collapsed" href="@Url.Action("Devices","Customer")">
                 <i class="bi bi-hdd"></i><span>Devices</span>
             </a>
         </li>
-        <!-- Digital Service -->
-        <li class="nav-item">
+        <li class="nav-item customer-role">
             <a class="nav-link collapsed" href="@Url.Action("Services","Customer")">
                 <i class="bi bi-cloud"></i><span>Digital Service</span>
             </a>
         </li>
-        <!--Product Type-->
-        <li class="nav-item">
+        <li class="nav-item customer-role">
             <a class="nav-link collapsed" href="@Url.Action("ProductType","Customer")">
                 <i class="bi bi-person"></i><span>Product Type</span>
             </a>
         </li>
-
     </ul>
 </aside>
 <!-- End Sidebar -->
