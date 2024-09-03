@@ -28,7 +28,6 @@ namespace IOT_UI.Controllers
                 using (var client = new HttpClient())
                 {
                     var loginData = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-
                     var response = await client.PostAsync($"{_configuration["https://localhost:7290"]}/api/User/Login", loginData);
 
                     if (response.IsSuccessStatusCode)

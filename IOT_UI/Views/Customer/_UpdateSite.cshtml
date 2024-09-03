@@ -7,23 +7,25 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" id="customerId" value="">
+                    <input type="hidden" id="siteId" value="">
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Site Name" id="txt_name">
+                        <input type="text" class="form-control" placeholder="Site Name" id="siteName" />
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Site Location" id="txt_location">
+                        <input type="text" class="form-control" placeholder="Site Location" id="siteLocation" />
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Latitude" id="txt_latitude">
+                        <input type="text" class="form-control" placeholder="Latitude" id="latitude" />
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Longitude" id="txt_longitude">
+                        <input type="text" class="form-control" placeholder="Longitude" id="longitude" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="btnUpdateSite()">Update</button>
+                <button type="submit" class="btn btn-primary" onclick="updateSiteData()">Update</button>
             </div>
         </div>
     </div>

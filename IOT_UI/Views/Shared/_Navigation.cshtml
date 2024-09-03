@@ -13,7 +13,7 @@
             document.getElementById('userRole').textContent = role;
 
             // Show/hide menu items based on role
-            var adminItems = document.querySelectorAll('.admin-role');
+            var adminItems = document.querySelectorAll('.');
             var customerItems = document.querySelectorAll('.customer-role');
 
             if (role === 'Admin') {
@@ -76,23 +76,23 @@
             </a>
         </li>
         <!-- Admin Items -->
-        <li class="nav-heading admin-role">Global Admin</li>
-        <li class="nav-item admin-role">
+        <li class="nav-heading ">Global Admin</li>
+        <li class="nav-item ">
             <a class="nav-link collapsed" href="@Url.Action("AdminAccount","Admin")">
                 <i class="bi bi-person"></i><span>Admin Account</span>
             </a>
         </li>
-        <li class="nav-item admin-role">
+        <li class="nav-item ">
             <a class="nav-link collapsed" href="@Url.Action("Customers","Admin")">
                 <i class="bi bi-person"></i><span>Customer Account</span>
             </a>
         </li>
-        <li class="nav-item admin-role">
+        <li class="nav-item ">
             <a class="nav-link collapsed" href="@Url.Action("Users","Admin")">
                 <i class="bi bi-person"></i><span>User Account</span>
             </a>
         </li>
-        <li class="nav-item admin-role">
+        <li class="nav-item ">
             <a class="nav-link collapsed" href="@Url.Action("UserRole","Admin")">
                 <i class="bi bi-person"></i><span>User Role</span>
             </a>

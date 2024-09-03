@@ -23,69 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th>Product Type Name</th>
-                                    <th>Min Value</th>
-                                    <th>Max Value</th>
-                                    <th>UOM</th>
-                                    <th>Is Active?</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>5</td>
-                                    <td>10</td>
-                                    <td>Celcius</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <i class="bi bi-three-dots-vertical menu-button"></i>
-                                            <div class="dropdown-content">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateProductType">Edit</a>
-                                                <a href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>5</td>
-                                    <td>10</td>
-                                    <td>Celcius</td>
-                                    <td>Yes%</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <i class="bi bi-three-dots-vertical menu-button"></i>
-                                            <div class="dropdown-content">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateProductType">Edit</a>
-                                                <a href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>5</td>
-                                    <td>10</td>
-                                    <td>Celcius</td>
-                                    <td>Yes%</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <i class="bi bi-three-dots-vertical menu-button"></i>
-                                            <div class="dropdown-content">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateProductType">Edit</a>
-                                                <a href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
+                        <table class="table table-bordered" id="tbl_ProductType"></table>
                     </div>
                 </div>
 
@@ -98,4 +36,6 @@
 
     <!-- Update Customer Partial View -->
     @Html.Partial("_UpdateProductType")
+
+    <script src="~/connectivity/ProductType.js"></script>
 </main>

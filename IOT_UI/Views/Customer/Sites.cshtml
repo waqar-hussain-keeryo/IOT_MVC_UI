@@ -23,35 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Location</th>
-                                    <th>Latitude</th>
-                                    <th>Longitude</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>Curicó</td>
-                                    <td>9958</td>
-                                    <td>9958</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <i class="bi bi-three-dots-vertical menu-button"></i>
-                                            <div class="dropdown-content">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateSite">Edit</a>
-                                                <a href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
+                        <table class="table table-bordered" id="tbl_Site"></table>
                     </div>
                 </div>
 
@@ -64,4 +36,6 @@
 
     <!-- Add Customer Partial View -->
     @Html.Partial("_UpdateSite")
+
+    <script src="~/connectivity/Site.js"></script>
 </main>

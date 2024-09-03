@@ -23,33 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Is Active?</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Unity Pugh</td>
-                                    <td>Curicó</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <i class="bi bi-three-dots-vertical menu-button"></i>
-                                            <div class="dropdown-content">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#updateService">Edit</a>
-                                                <a href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- End Table with stripped rows -->
+                        <table class="table table-bordered" id="tbl_Service"></table>
                     </div>
                 </div>
 
@@ -62,4 +36,6 @@
 
     <!-- Update Service Partial View -->
     @Html.Partial("_UpdateService")
+
+    <script src="~/connectivity/Service.js"></script>
 </main>

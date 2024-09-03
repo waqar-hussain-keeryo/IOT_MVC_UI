@@ -7,23 +7,25 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" id="customerId" value="">
+                    <input type="hidden" id="digitalServiceId" value="">
                     <div class="mb-3">
                         <label>Start Date</label>
-                        <input type="date" class="form-control" placeholder="Start Date" id="txt_startDate">
+                        <input type="date" class="form-control" placeholder="Start Date" id="serviceStartDate">
                     </div>
                     <div class="mb-3">
                         <label>End Date</label>
-                        <input type="date" class="form-control" placeholder="End Date" id="txt_endDate">
+                        <input type="date" class="form-control" placeholder="End Date" id="serviceEndDate">
                     </div>
                     <div class="mb-3">
                         <label>Is Active?</label>
-                        <input type="checkbox" name="isActive" id="txt_active">
+                        <input type="checkbox" name="isActive" id="isActive">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="btnUpdateService()">Update</button>
+                <button type="submit" class="btn btn-primary" onclick="updateServiceData()">Update</button>
             </div>
         </div>
     </div>

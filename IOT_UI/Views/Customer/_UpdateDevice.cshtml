@@ -7,20 +7,23 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" id="customerId" value="">
+                    <input type="hidden" id="siteId" value="">
+                    <input type="hidden" id="deviceId" value="">
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Device Name" id="txt_deviceName">
+                        <input type="text" class="form-control" placeholder="Device Name" id="deviceName">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Product Type" id="txt_productType">
+                        <input type="text" class="form-control" placeholder="Product Type" id="productType">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Threshold Value" id="txt_thresholdValue">
+                        <input type="text" class="form-control" placeholder="Threshold Value" id="threSholdValue">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="btnUpdateDevice()">Update</button>
+                <button type="submit" class="btn btn-primary" onclick="updateDeviceData()">Update</button>
             </div>
         </div>
     </div>
