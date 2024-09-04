@@ -26,7 +26,7 @@ function initializeDataTable() {
                         maxVal: value.maxVal,
                         uom: value.uom,
                         isActive: value.isActive,
-                        actions: edit(value.productTypeID) // Corrected here
+                        actions: edit(value.productTypeID)
                     };
                 });
             }
@@ -75,13 +75,14 @@ function update(productTypeID) {
     });
 }
 
+
 function updateProductTypes() {
     var productTypeID = $('#updateProductType #productTypeID').val();
     productTypeData.productTypeID = productTypeID;
     productTypeData.productTypeName = $('#updateProductType #productTypeName').val();
-    productTypeData.minVal = $('#updateProductType #minVal').val();
-    productTypeData.maxVal = $('#updateProductType #maxVal').val();
-    productTypeData.maxVal = $('#updateProductType #uom').val();
+    productTypeData.minVal = parseFloat($('#updateProductType #minVal').val());
+    productTypeData.maxVal = parseFloat($('#updateProductType #maxVal').val());
+    productTypeData.uom = $('#updateProductType #uom').val();
     productTypeData.isActive = $('#updateProductType #isActive').is(':checked');
 
     $.ajax({
@@ -100,6 +101,8 @@ function updateProductTypes() {
         }
     });
 }
+
+
 
 function deleteProductType(productTypeID) {
     if (confirm('Are you sure you want to delete this product type?')) {

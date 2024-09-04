@@ -1,27 +1,144 @@
 ﻿<div class="modal fade" id="addDevice" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Add Device</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Device Name" id="txt_deviceName">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Product Type" id="txt_productType">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Threshold Value" id="txt_thresholdValue">
-                    </div>
-                </form>
+                <!-- Input Form -->
+                <div id="inputForm">
+                    <form id="deviceForm">
+                        <input type="hidden" id="customerId" value="">
+                        <input type="hidden" id="siteId" value="">
+                        <input type="hidden" id="deviceId" value="">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Device Name" id="deviceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Product Type" id="productType" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Threshold Value" id="thresholdValue" required>
+                        </div>
+                        <div class="mb-3" style="display: flex; justify-content: flex-end;">
+                            <button type="button" class="btn btn-primary" onclick="saveDeviceData()">Add Site</button>
+                        </div>
+                    </form>
+                </div>
+                <hr />
+                <!-- Data Table -->
+                <div id="dataTableContainer" class="mt-4">
+                    <table class="table table-striped" id="deviceTable">
+                        <thead>
+                            <tr>
+                                <th>Device Name</th>
+                                <th>Product Type</th>
+                                <th>Threshold Value</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTableBody">
+                            <!-- Data rows will be added here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="btnAddDevice()">Add</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save Site</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    let editingRowIndex = null; // Flag for editing mode
+
+       $(document).ready(function() {
+        $('#deviceTable').DataTable({
+            "pageLength": 5,
+            "columnDefs": [
+                {
+                    "targets": -1, // Last column
+                    "data": null,
+                    "defaultContent": '<div class="dropdown">' +
+                                        '<i class="bi bi-three-dots-vertical menu-button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>' +
+                                        '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+                                        '<li><a class="dropdown-item" href="#" onclick="editRow(this)">Edit</a></li>' +
+                                        '<li><a class="dropdown-item" href="#" onclick="deleteRow(this)">Delete</a></li>' +
+                                        '</ul>' +
+                                        '</div>'
+                }
+            ]
+        });
+    });
+
+
+    function saveDeviceData() {
+        // Get input values
+        const deviceName = document.getElementById('deviceName').value;
+        const productType = document.getElementById('productType').value;
+        const thresholdValue = document.getElementById('thresholdValue').value;
+
+        // Check if inputs are empty
+        if (!deviceName || !productType || !thresholdValue) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        // Get the DataTable instance
+        const table = $('#deviceTable').DataTable();
+
+        if (editingRowIndex !== null) {
+            // Update existing row
+            table.row(editingRowIndex).data([
+                deviceName,
+                productType,
+                thresholdValue,
+                `<div class="btn-group" role="group">
+                    <button type="button" class="btn btn-info btn-sm" onclick="editRow(this)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+                </div>`
+            ]).draw();
+
+            // Reset the flag
+            editingRowIndex = null;
+        } else {
+            // Add new row
+            table.row.add([
+                deviceName,
+                productType,
+                thresholdValue,
+                `<div class="btn-group" role="group">
+                    <button type="button" class="btn btn-info btn-sm" onclick="editRow(this)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+                </div>`
+            ]).draw();
+        }
+
+        // Clear input fields
+        document.getElementById('deviceForm').reset();
+    }
+
+    function editRow(button) {
+        const row = $(button).closest('tr');
+        const cells = row.find('td');
+
+        // Set form fields with row data
+        document.getElementById('deviceName').value = cells[0].textContent;
+        document.getElementById('productType').value = cells[1].textContent;
+        document.getElementById('thresholdValue').value = cells[2].textContent;
+
+        // Set the editing flag
+        editingRowIndex = $('#deviceTable').DataTable().row(row).index();
+    }
+
+    function deleteRow(button) {
+        if (confirm('Are you sure you want to delete this row?')) {
+            const table = $('#deviceTable').DataTable();
+            const row = $(button).closest('tr');
+            table.row(row).remove().draw();
+        }
+    }
+</script>

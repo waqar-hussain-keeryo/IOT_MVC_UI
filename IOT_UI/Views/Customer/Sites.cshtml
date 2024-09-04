@@ -26,7 +26,6 @@
                         <table class="table table-bordered" id="tbl_Site"></table>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -34,8 +33,23 @@
     <!-- Add Customer Partial View -->
     @Html.Partial("_AddSite")
 
+    <!-- Add Device Partial View -->
+    @Html.Partial("_AddDevice")
+
+    <!-- Add Service Partial View -->
+    @Html.Partial("_AddService")
+
+    <!-- Add Notification User Partial View -->
+    @Html.Partial("_AddNotificationUsers")
+
     <!-- Add Customer Partial View -->
     @Html.Partial("_UpdateSite")
+
+    <!-- Update Device Partial View -->
+    @Html.Partial("_UpdateDevice")
+
+    <!-- Update Service Partial View -->
+    @Html.Partial("_UpdateService")
 
     <script src="~/connectivity/Site.js"></script>
 </main>

@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
-    initializeDataTable();
+    if (!$.fn.DataTable.isDataTable('#tbl_Site')) {
+        initializeDataTable();
+    }
 });
+
 
 var customerData = []; // Store all customer data globally
 var siteData = null; // Store the site data for editing
@@ -25,6 +28,7 @@ function initializeDataTable() {
                         customer.sites.forEach(site => {
                             sitesData.push({
                                 customerID: customer.customerID,
+                                customerEmail: customer.customerEmail,
                                 siteID: site.siteID,
                                 siteName: site.siteName,
                                 siteLocation: site.siteLocation,
@@ -41,6 +45,7 @@ function initializeDataTable() {
         columns: [
             { data: 'customerID', title: "Customer ID", visible: false },
             { data: 'siteID', title: "Site ID", visible: false },
+            { data: 'customerEmail', title: "Customer Email" },
             { data: 'siteName', title: "Site Name" },
             { data: 'siteLocation', title: "Location" },
             { data: 'latitude', title: "Latitude" },
@@ -56,6 +61,8 @@ var edit = (siteId) => `
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#updateSite" onclick="editSite('${siteId}')">Edit</a></li>
             <li><a class="dropdown-item" href="#" onclick="deleteSite('${siteId}')">Delete</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addDevice" onclick="">Add Device</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addService" onclick="">Add Digital Service</a></li>
         </ul>
     </div>`;
 
@@ -67,7 +74,7 @@ function editSite(siteId) {
         if (site) {
             siteData = {
                 ...site,
-                customerID: customer.customerID // Add customerID to siteData
+                customerID: customer.customerID
             };
         }
     });

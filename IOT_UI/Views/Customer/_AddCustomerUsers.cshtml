@@ -1,24 +1,129 @@
-﻿<div class="modal fade" id="addCustomerUsers" aria-hidden="true">
-    <div class="modal-dialog">
+﻿<!-- Add Customer Users Modal -->
+<div class="modal fade" id="addCustomerUsers" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Add Customer Users</h1>
+                <h1 class="modal-title fs-5">Create User Account</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label>Add Users</label>
-                        <select class="form-control" multiple>
-                            <option disabled selected>Select Users</option>
-                        </select>
+                <form id="createUserForm" method="post" class="row g-3 needs-validation" novalidate>
+                    <div class="col-12">
+                        <input type="text" name="txt_firstName" class="form-control" id="txt_firstName" placeholder="First Name" required>
+                        <div class="invalid-feedback">Please, enter first name!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" name="txt_lastName" class="form-control" id="txt_lastName" placeholder="Last Name" required>
+                        <div class="invalid-feedback">Please, enter last name!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="email" name="txt_email" class="form-control" id="txt_email" placeholder="Email" required>
+                        <div class="invalid-feedback">Please enter a valid Email address!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="password" name="txt_password" class="form-control" id="txt_password" placeholder="Password" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="password" name="txt_confirmPassword" class="form-control" id="txt_confirmPassword" placeholder="Confirm Password" required>
+                        <div class="invalid-feedback">Please confirm your password!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" type="submit">Create Account</button>
                     </div>
                 </form>
+                <hr />
+                <table id="demoUsersTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john.doe@example.com</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary edit-btn" data-id="1">
+                                    Edit
+                                </button>
+                                <button class="btn btn-sm btn-danger delete-btn" data-id="1">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jane</td>
+                            <td>Smith</td>
+                            <td>jane.smith@example.com</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary edit-btn" data-id="2">
+                                    Edit
+                                </button>
+                                <button class="btn btn-sm btn-danger delete-btn" data-id="2">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="btnAddCustomerUsers()">Add</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+        $(document).ready(function() {
+        // Initialize DataTable
+        $('#demoUsersTable').DataTable();
+
+        // Handle Edit button click
+        $(document).on('click', '.edit-btn', function() {
+            var userId = $(this).data('id');
+            alert('Edit user with ID: ' + userId);
+            // Implement the actual edit functionality here
+        });
+
+        // Handle Delete button click
+        $(document).on('click', '.delete-btn', function() {
+            var userId = $(this).data('id');
+            if (confirm('Are you sure you want to delete user with ID: ' + userId + '?')) {
+                alert('Deleted user with ID: ' + userId);
+                // Implement the actual delete functionality here
+            }
+        });
+
+        // Handle form submission
+        $('#createUserForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var password = $('#txt_password').val();
+            var confirmPassword = $('#txt_confirmPassword').val();
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return false; // Prevent form submission
+            }
+
+            // If passwords match, you can proceed with form submission
+            // For example, submit via AJAX or allow the form to submit normally
+            alert('Form submitted successfully!');
+            // Uncomment the line below to actually submit the form
+            // this.submit();
+        });
+    });
+</script>

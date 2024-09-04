@@ -1,24 +1,103 @@
-﻿<div class="modal fade" id="addNotificationUsers" aria-hidden="true">
-    <div class="modal-dialog">
+﻿<!-- Add Notification User Modal -->
+<div class="modal fade" id="addNotificationUser" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Add Notification Users</h1>
+                <h1 class="modal-title fs-5">Add Notification User</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <!-- Input Form -->
+                <form id="notificationUserForm">
                     <div class="mb-3">
-                        <label>Add Users</label>
-                        <select class="form-control" multiple>
-                            <option disabled selected>Select Users</option>
+                        <label for="notificationUserSelect">Select Users</label>
+                        <select id="notificationUserSelect" class="form-select" multiple required>
                         </select>
+                    </div>
+                    <div class="mb-3" style="display: flex; justify-content: flex-end;">
+                        <button type="button" class="btn btn-primary" onclick="saveNotificationUserData()">Add User</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="btnAddNotificationUsers()">Add</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        // Initialize DataTable
+        $('#serviceTable').DataTable({
+            "pageLength": 5,
+            "columnDefs": [
+                {
+                    "targets": -1, // Last column
+                    "data": null,
+                    "defaultContent": '<div class="dropdown">' +
+                                        '<i class="bi bi-three-dots-vertical menu-button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>' +
+                                        '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+                                        '<li><a class="dropdown-item" href="#" onclick="editServiceRow(this)">Edit</a></li>' +
+                                        '<li><a class="dropdown-item" href="#" onclick="deleteServiceRow(this)">Delete</a></li>' +
+                                        '<li><a class="dropdown-item" href="#" onclick="notificationuserRow(this)">Add Notification User</a></li>' +
+                                        '</ul>' +
+                                        '</div>'
+                }
+            ]
+        });
+
+        // Initialize Select2
+        $('#notificationUserSelect').select2({
+            placeholder: 'Select users',
+            width: '100%'
+        });
+    });
+
+    function notificationuserRow(link) {
+        // Populate dropdown options (example data, replace with actual data as needed)
+        const options = [
+            { id: '1', text: 'User 1' },
+            { id: '2', text: 'User 2' },
+            { id: '3', text: 'User 3' }
+        ];
+
+        const select = $('#notificationUserSelect');
+        select.empty(); // Clear existing options
+        options.forEach(option => {
+            const newOption = new Option(option.text, option.id, false, false);
+            select.append(newOption).trigger('change');
+        });
+
+        // Open the Add Notification User modal
+        const modal = new bootstrap.Modal(document.getElementById('addNotificationUser'));
+        modal.show();
+    }
+
+    function saveNotificationUserData() {
+        // Get input values
+        const userName = document.getElementById('notificationUserName').value;
+        const userEmail = document.getElementById('notificationUserEmail').value;
+        const selectedUsers = $('#notificationUserSelect').val();
+
+        // Check if inputs are empty
+        if (!userName || !userEmail || selectedUsers.length === 0) {
+            alert('Please fill out all fields and select at least one user.');
+            return;
+        }
+
+        // You can handle the data submission here
+        // Example: Displaying the data in an alert for demonstration purposes
+        alert(`Notification User Added:\nName: ${userName}\nEmail: ${userEmail}\nSelected Users: ${selectedUsers.join(', ')}`);
+
+        // Clear input fields
+        document.getElementById('notificationUserForm').reset();
+        $('#notificationUserSelect').val([]).trigger('change'); // Clear selection
+
+        // Close the modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addNotificationUser'));
+        modal.hide();
+    }
+
+</script>
