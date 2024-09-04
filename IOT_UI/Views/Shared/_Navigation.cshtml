@@ -80,6 +80,21 @@
                 <i class="bi bi-person"></i><span>Admin</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="@Url.Action("Customers","Admin")">
+                <i class="bi bi-person"></i><span>Customer Account</span>
+            </a>
+        </li>
+        @* <li class="nav-item">
+            <a class="nav-link collapsed" href="@Url.Action("Users","Admin")">
+                <i class="bi bi-person"></i><span>User Account</span>
+            </a>
+        </li> *@
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="@Url.Action("UserRole","Admin")">
+                <i class="bi bi-person"></i><span>User Role</span>
+            </a>
+        </li>
         <li class="nav-item customer-role">
             <a class="nav-link collapsed" href="@Url.Action("Index","Customer")">
                 <i class="bi bi-person"></i><span>Customers</span>
